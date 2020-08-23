@@ -1,13 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     <meta charset="utf-8" />
     <title>Crypto</title>
     <base href="/crypto/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/yeti/bootstrap.min.css"
+      integrity="sha384-mLBxp+1RMvmQmXOjBzRjqqr0dP9VHU2tb3FK6VB0fJN/AOu7/y+CAeYeWJZ4b3ii"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/586c28044a.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body>
+  <body class="d-flex flex-column h-100">
     <app-root></app-root>
+    <footer class="footer mt-auto py-3">
+      <div class="container-fluid">
+        <div class="alert alert-secondary privacy-block mt-2">
+          <strong>
+            <span class="fas fa-lock text-success"></span> We don't store any
+            data.
+          </strong>
+          <span>
+            All the files you upload/download or text you enter remain in
+            browser itself. The conversion is done at browser itself.
+          </span>
+        </div>
+      </div>
+    </footer>
   <script src="runtime.js" defer></script><script src="polyfills.js" defer></script><script src="styles.js" defer></script><script src="vendor.js" defer></script><script src="main.js" defer></script></body>
 </html>
