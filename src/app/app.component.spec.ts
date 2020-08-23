@@ -1,5 +1,6 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HeaderModule } from './header/header.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
@@ -9,7 +10,7 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, HeaderModule],
       declarations: [AppComponent],
     }).compileComponents();
 
@@ -23,7 +24,12 @@ describe('AppComponent', () => {
   });
 
   it('Should show alert about privacy', () => {
-    const privacyBlock = nativeElement.querySelector('.privacy-block');
+    const privacyBlock = document.getElementsByClassName('.privacy-block');
     expect(privacyBlock).toBeTruthy();
+  });
+
+  it('Should show header', () => {
+    const header = nativeElement.querySelector('app-header');
+    expect(header).toBeTruthy();
   });
 });

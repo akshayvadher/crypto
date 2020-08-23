@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     <meta charset="utf-8" />
     <title>Crypto</title>
@@ -17,7 +17,21 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body class="d-flex flex-column h-100">
     <app-root></app-root>
+    <footer class="footer mt-auto py-3">
+      <div class="container-fluid">
+        <div class="alert alert-secondary privacy-block mt-2">
+          <strong>
+            <span class="fas fa-lock text-success"></span> We don't store any
+            data.
+          </strong>
+          <span>
+            All the files you upload/download or text you enter remain in
+            browser itself. The conversion is done at browser itself.
+          </span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/crypto/">
+    <img
+      src="./assets/favicon/android-chrome-192x192.png"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt="Crypto logo"
+      loading="lazy"
+    />
+    Crypto</a
+  >
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarColor01"
+    aria-controls="navbarColor01"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']">
+          Home <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/encrypt']">
+          Encrypt
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Decrypt</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Hash</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Learn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      <a
+        href="http://github.com/akshayvadher/crypto"
+        target="_blank"
+        title="GitHub repository"
+      >
+        <span class="fab fa-github fa-2x"></span>
+      </a>
+    </span>
+  </div>
+</nav>
