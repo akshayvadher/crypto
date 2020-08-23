@@ -10,6 +10,8 @@ Encrypt or Decrypt a file or text online at https://akshayvadher.github.io/crypt
 
 We don't save any information you provide anywhere.
 
+All the files you upload/download or text you enter remain in browser itself. The conversion is done at browser itself.
+
 Infact we don't have a backend!
 
 ## Code
