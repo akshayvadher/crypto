@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
+import {
+  APP_BASE_HREF,
+  LocationStrategy,
+  HashLocationStrategy,
+} from '@angular/common';
 
 const routes: Routes = [
   { path: '', redirectTo: '/encrypt', pathMatch: 'full' },
@@ -14,10 +18,11 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   providers: [
-    {
-      provide: APP_BASE_HREF,
-      useValue: '/crypto/',
-    },
+    // {
+    //   provide: APP_BASE_HREF,
+    //   useValue: '/crypto/',
+    // },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   exports: [RouterModule],
 })
