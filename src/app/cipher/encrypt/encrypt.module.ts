@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EncryptRoutingModule } from './encrypt-routing.module';
 import { EncryptComponent } from './encrypt.component';
+import { SharedModule } from '@crypto/shared/shared.module';
 
 @NgModule({
   declarations: [EncryptComponent],
@@ -11,6 +12,7 @@ import { EncryptComponent } from './encrypt.component';
     FormsModule,
     ReactiveFormsModule,
     EncryptRoutingModule,
+    SharedModule,
   ],
   exports: [],
 })

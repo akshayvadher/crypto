@@ -1,22 +1,33 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EncryptComponent } from './encrypt.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
-describe('EncryptComponent', () => {
-  let component: EncryptComponent;
-  let fixture: ComponentFixture<EncryptComponent>;
+import { CommonFormComponent } from './common-form.component';
+
+describe('CommonFormComponent', () => {
+  let component: CommonFormComponent;
+  let fixture: ComponentFixture<CommonFormComponent>;
   let nativeElement: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EncryptComponent],
-      imports: [FormsModule, ReactiveFormsModule],
+      declarations: [CommonFormComponent],
+      imports: [ReactiveFormsModule],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EncryptComponent);
+    fixture = TestBed.createComponent(CommonFormComponent);
     component = fixture.componentInstance;
+    component.inputConfiguration = {
+      downloadFileButtonClasses: ['fas', 'another-class'],
+      downloadFilePostfix: 'postfix',
+      downloadFileButtonText: 'download text',
+      revealHereClasses: ['fas', 'another-class'],
+      revealHereText: 'reveal text',
+    };
+    component.process = (content: string, password: string, algo: string) => {
+      return 'fake';
+    };
     fixture.detectChanges();
     nativeElement = fixture.nativeElement;
   });

@@ -7,16 +7,11 @@ import {
 } from '@angular/common';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/decrypt', pathMatch: 'full' },
+  { path: '', redirectTo: '/cipher/decrypt', pathMatch: 'full' },
   {
-    path: 'encrypt',
+    path: 'cipher',
     loadChildren: () =>
-      import('./encrypt/encrypt.module').then((m) => m.EncryptModule),
-  },
-  {
-    path: 'decrypt',
-    loadChildren: () =>
-      import('./decrypt/decrypt.module').then((m) => m.DecryptModule),
+      import('./cipher/cipher.module').then((m) => m.CipherModule),
   },
 ];
 
