@@ -55,25 +55,33 @@
       </small>
     </div>
   </div>
-  <button
-    type="button"
-    class="btn btn-primary"
-    [disabled]="!form.valid"
-    (click)="onDownloadFileClick()"
-  >
-    <span [class]="inputConfiguration.downloadFileButtonClasses"></span> |
-    <span class="fas fa-download"></span> |
-    <span>{{ inputConfiguration.downloadFileButtonText }}</span>
-  </button>
-  <span class="ml-2 mr-2">|</span>
-  <button
-    type="button"
-    class="btn btn-primary"
-    [disabled]="!form.valid"
-    (click)="onRevealHereClick()"
-  >
-    <span [class]="inputConfiguration.revealHereClasses"></span> |
-    <span class="fas fa-file"></span> |
-    <span>{{ inputConfiguration.revealHereText }}</span>
-  </button>
+
+  <div class="form-group">
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="!form.valid"
+      (click)="onDownloadFileClick()"
+    >
+      <span [class]="inputConfiguration.downloadFileButtonClasses"></span> |
+      <span class="fas fa-download"></span> |
+      <span>{{ inputConfiguration.downloadFileButtonText }}</span>
+    </button>
+    <span class="ml-2 mr-2">|</span>
+    <button
+      type="button"
+      class="btn btn-primary"
+      [disabled]="!form.valid"
+      (click)="onRevealHereClick()"
+    >
+      <span [class]="inputConfiguration.revealHereClasses"></span> |
+      <span class="fas fa-file"></span> |
+      <span>{{ inputConfiguration.revealHereText }}</span>
+    </button>
+  </div>
+  <div *ngIf="revealedContent" class="form-group">
+    <textarea name="revealed-content" rows="10" class="form-control">{{
+      revealedContent
+    }}</textarea>
+  </div>
 </form>
