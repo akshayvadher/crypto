@@ -6,7 +6,7 @@ import {
   FormBuilder,
   FormGroup,
 } from '@angular/forms';
-import { PasswordPolicy } from 'password-sheriff';
+import { PasswordPolicy, charsets } from 'password-sheriff';
 
 import { saveAs } from 'file-saver';
 import { InputConfiguration } from './input-configuration';
@@ -119,7 +119,17 @@ export class CommonFormComponent implements OnInit {
   }
 
   passwordValidator(control: AbstractControl): ValidationErrors | null {
-    const lengthPolicy = new PasswordPolicy({ length: { minLength: 6 } });
+    const lengthPolicy = new PasswordPolicy({
+      length: { minLength: 8 },
+      contains: {
+        expressions: [
+          charsets.upperCase,
+          charsets.lowerCase,
+          charsets.numbers,
+          charsets.specialCharacters,
+        ],
+      },
+    });
     const passwordValue = control.value;
     const isValid = lengthPolicy.check(passwordValue);
     return isValid ? null : { notValid: true };
