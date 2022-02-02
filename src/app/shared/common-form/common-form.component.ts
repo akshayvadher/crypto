@@ -1,4 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import {
   Validators,
   AbstractControl,
@@ -16,7 +22,7 @@ import { InputConfiguration } from './input-configuration';
   templateUrl: './common-form.component.html',
   styleUrls: ['./common-form.component.scss'],
 })
-export class CommonFormComponent implements OnInit {
+export class CommonFormComponent implements OnInit, OnChanges {
   @Input() inputConfiguration: InputConfiguration;
   @Input() process: (content: string, password: string, algo: string) => string;
 
@@ -24,42 +30,75 @@ export class CommonFormComponent implements OnInit {
   file: File;
   revealedContent: string;
 
+  selectedInput: 'file' | 'text' = 'file';
+
   constructor(formBuilder: FormBuilder) {
     this.form = formBuilder.group({
       inputSelection: [
-        { value: 'file', disabled: true },
+        { value: 'file', disabled: false },
         [Validators.required],
       ],
       fileInputName: ['', Validators.required],
-      algo: [{ value: 'AES', disabled: true }],
-      password: ['', [this.passwordValidator]],
+      algo: [],
+      password: [''],
     });
   }
 
   ngOnInit(): void {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes) {
+      if (this.inputConfiguration.requiredPassword) {
+        this.form
+          .get('password')
+          .addValidators(this.passwordValidator.bind(this));
+      }
+    }
+  }
+  fileSelected(): void {
+    this.selectedInput = 'file';
+  }
+
+  textSelected(): void {
+    this.selectedInput = 'text';
+  }
+
   onDownloadFileClick(): void {
-    this.readFileAndDownload();
+    if (this.selectedInput === 'file') {
+      this.readFileAndDownload();
+    } else {
+      const content = this.form.get('fileInputName').value;
+      this.processAndDownload(content);
+    }
   }
   onRevealHereClick(): void {
-    this.readFileAndReveal();
+    if (this.selectedInput === 'file') {
+      this.readFileAndDownload();
+    } else {
+      const content = this.form.get('fileInputName').value;
+      this.processAndReveal(content);
+    }
   }
 
   async readFileAndDownload(): Promise<any> {
     try {
       const content = await this.readFile();
-      const processedContent = this.process(
-        content,
-        this.form.get('password').value,
-        this.form.get('algo').value
-      );
-      if (processedContent) {
-        this.downloadFile(processedContent);
-      } else {
-        this.showError();
-      }
+      this.processAndDownload(content);
     } catch (e) {
       this.form.get('fileInputName').reset();
+      this.showError();
+    }
+  }
+
+  private processAndDownload(content: string) {
+    const processedContent = this.process(
+      content,
+      this.form.get('password').value,
+      this.form.get('algo').value
+    );
+    if (processedContent) {
+      this.downloadFile(processedContent);
+    } else {
       this.showError();
     }
   }
@@ -67,18 +106,22 @@ export class CommonFormComponent implements OnInit {
   async readFileAndReveal(): Promise<any> {
     try {
       const content = await this.readFile();
-      const processedContent = this.process(
-        content,
-        this.form.get('password').value,
-        this.form.get('algo').value
-      );
-      this.revealedContent = processedContent;
-      if (processedContent) {
-      } else {
-        this.showError();
-      }
+      this.processAndReveal(content);
     } catch (e) {
       this.form.get('fileInputName').reset();
+      this.showError();
+    }
+  }
+
+  private processAndReveal(content: string) {
+    const processedContent = this.process(
+      content,
+      this.form.get('password').value,
+      this.form.get('algo').value
+    );
+    this.revealedContent = processedContent;
+    if (processedContent) {
+    } else {
       this.showError();
     }
   }

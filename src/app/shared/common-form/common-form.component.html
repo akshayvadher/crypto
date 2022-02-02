@@ -7,6 +7,7 @@
         formControlName="inputSelection"
         id="encrypt-input-file"
         value="file"
+        (click)="fileSelected()"
       />
       <label class="form-check-label" for="encrypt-input-file">File</label>
     </div>
@@ -17,6 +18,7 @@
         formControlName="inputSelection"
         id="encrypt-input-text"
         value="text"
+        (click)="textSelected()"
       />
       <label class="form-check-label" for="encrypt-input-text">Text</label>
     </div>
@@ -27,20 +29,27 @@
       class="form-control-file"
       id="encrypt-file-upload"
       (change)="onFileChange($event)"
+      [hidden]="selectedInput !== 'file'"
     />
-    <input type="hidden" formControlName="fileInputName" />
+    <input
+      [hidden]="selectedInput !== 'text'"
+      formControlName="fileInputName"
+      class="form-control"
+    />
   </div>
 
   <div class="form-group row">
     <label for="algo" class="col-sm-2 col-form-label">Algorithm</label>
     <div class="col-sm-10">
       <select class="form-control" formControlName="algo" id="algo">
-        <option value="AES">AES</option>
+        <option *ngFor="let alg of inputConfiguration.supportedAlgorithms">
+          {{ alg }}
+        </option>
       </select>
     </div>
   </div>
 
-  <div class="form-group row">
+  <div class="form-group row" *ngIf="inputConfiguration.requiredPassword">
     <label for="password" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
       <input

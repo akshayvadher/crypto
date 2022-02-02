@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonFormComponent } from './common-form.component';
+import { Algorithm } from './input-configuration';
 
 describe('CommonFormComponent', () => {
   let component: CommonFormComponent;
@@ -24,6 +25,8 @@ describe('CommonFormComponent', () => {
       downloadFileButtonText: 'download text',
       revealHereClasses: ['fas', 'another-class'],
       revealHereText: 'reveal text',
+      requiredPassword: true,
+      supportedAlgorithms: [Algorithm.AES],
     };
     component.process = (content: string, password: string, algo: string) => {
       return 'fake';
