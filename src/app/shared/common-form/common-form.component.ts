@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   Validators,
   AbstractControl,
@@ -16,7 +16,7 @@ import { InputConfiguration } from './input-configuration';
   templateUrl: './common-form.component.html',
   styleUrls: ['./common-form.component.scss'],
 })
-export class CommonFormComponent implements OnInit {
+export class CommonFormComponent implements OnInit, OnChanges {
   @Input() inputConfiguration: InputConfiguration;
   @Input() process: (content: string, password: string, algo: string) => string;
 
@@ -31,12 +31,20 @@ export class CommonFormComponent implements OnInit {
         [Validators.required],
       ],
       fileInputName: ['', Validators.required],
-      algo: [{ value: 'AES', disabled: true }],
-      password: ['', [this.passwordValidator]],
+      algo: [],
+      password: [''],
     });
   }
 
   ngOnInit(): void {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+      if(changes){
+        if(this.inputConfiguration.requiredPassword){
+          this.form.get('password').addValidators(this.passwordValidator.bind(this))
+        }
+      }
+  }
 
   onDownloadFileClick(): void {
     this.readFileAndDownload();

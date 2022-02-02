@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AES } from 'crypto-js';
-import { InputConfiguration } from '@crypto/shared/common-form/input-configuration';
+import { Algorithm, InputConfiguration } from '@crypto/shared/common-form/input-configuration';
 
 @Component({
   selector: 'app-encrypt',
@@ -17,6 +17,8 @@ export class EncryptComponent implements OnInit {
       downloadFileButtonText: 'Download encrypted file',
       revealHereClasses: ['fas', 'fa-lock'],
       revealHereText: 'Reveal encrypted text here',
+      supportedAlgorithms: [Algorithm.AES],
+      requiredPassword: true
     };
   }
 
