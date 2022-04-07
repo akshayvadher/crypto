@@ -3,7 +3,7 @@ import {
   Algorithm,
   InputConfiguration,
 } from '@crypto/shared/common-form/input-configuration';
-import { MD5, enc } from 'crypto-js';
+import { MD5, SHA1, SHA256, SHA512, SHA3 } from 'crypto-js';
 
 @Component({
   templateUrl: './hash.component.html',
@@ -19,7 +19,13 @@ export class HashComponent implements OnInit {
       downloadFileButtonText: 'Download hashed file',
       revealHereClasses: ['fas', 'fa-lock'],
       revealHereText: 'Reveal hashed text here',
-      supportedAlgorithms: [Algorithm.MD5, Algorithm.BCRYPT],
+      supportedAlgorithms: [
+        Algorithm.MD5,
+        Algorithm.SHA1,
+        Algorithm.SHA256,
+        Algorithm.SHA512,
+        Algorithm.SHA3,
+      ],
       requiredPassword: false,
     };
   }
@@ -27,11 +33,21 @@ export class HashComponent implements OnInit {
   ngOnInit(): void {}
 
   hash(content: string, password: string, algo: string): string {
-
-    console.log({content, password, algo})
     if (algo == Algorithm.MD5) {
       return MD5(content).toString();
     }
-    return "base64";
+    if (algo == Algorithm.SHA1) {
+      return SHA1(content).toString();
+    }
+    if (algo == Algorithm.SHA256) {
+      return SHA256(content).toString();
+    }
+    if (algo == Algorithm.SHA512) {
+      return SHA512(content).toString();
+    }
+    if (algo == Algorithm.SHA3) {
+      return SHA3(content).toString();
+    }
+    return 'not supported';
   }
 }
