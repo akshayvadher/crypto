@@ -13,7 +13,16 @@ const routes: Routes = [
     loadChildren: () =>
       import('./cipher/cipher.module').then((m) => m.CipherModule),
   },
-  { path: 'encode', loadChildren: () => import('./encode/encode.module').then(m => m.EncodeModule) },
+  {
+    path: 'encode',
+    loadChildren: () =>
+      import('./encode/encode.module').then((m) => m.EncodeModule),
+  },
+  {
+    path: 'hash',
+    loadChildren: () =>
+      import('./hash/hash.module').then((m) => m.HashModule),
+  },
 ];
 
 @NgModule({

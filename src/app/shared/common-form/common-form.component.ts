@@ -53,6 +53,11 @@ export class CommonFormComponent implements OnInit, OnChanges {
           .get('password')
           .addValidators(this.passwordValidator.bind(this));
       }
+      if (this.inputConfiguration.supportedAlgorithms) {
+        this.form
+          .get('algo')
+          .setValue(this.inputConfiguration.supportedAlgorithms[0]);
+      }
     }
   }
   fileSelected(): void {

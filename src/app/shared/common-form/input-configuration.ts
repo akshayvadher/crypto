@@ -11,5 +11,7 @@ export class InputConfiguration {
 
 export enum Algorithm {
   AES = 'AES',
-  BASE_64 = 'BASE_64'
+  BASE_64 = 'BASE_64',
+  MD5 = 'MD5',
+  BCRYPT = 'BCRYPT',
 }
