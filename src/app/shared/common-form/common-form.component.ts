@@ -44,7 +44,17 @@ export class CommonFormComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setSupportedAlgoIfProvided();
+  }
+
+  private setSupportedAlgoIfProvided() {
+    if (this.inputConfiguration.supportedAlgorithms) {
+      this.form
+        .get('algo')
+        .setValue(this.inputConfiguration.supportedAlgorithms[0]);
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes) {
@@ -52,11 +62,6 @@ export class CommonFormComponent implements OnInit, OnChanges {
         this.form
           .get('password')
           .addValidators(this.passwordValidator.bind(this));
-      }
-      if (this.inputConfiguration.supportedAlgorithms) {
-        this.form
-          .get('algo')
-          .setValue(this.inputConfiguration.supportedAlgorithms[0]);
       }
     }
   }

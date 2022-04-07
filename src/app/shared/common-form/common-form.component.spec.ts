@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommonFormComponent } from './common-form.component';
@@ -9,7 +9,7 @@ describe('CommonFormComponent', () => {
   let fixture: ComponentFixture<CommonFormComponent>;
   let nativeElement: HTMLElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CommonFormComponent],
       imports: [ReactiveFormsModule],
@@ -44,11 +44,11 @@ describe('CommonFormComponent', () => {
     expect(radio.length).toBe(2);
   });
 
-  it('Should by default select file selection', () => {
-    const fileRadioOption = nativeElement.querySelector(
-      '#encrypt-input-file'
+  it('Should by default select text selection', () => {
+    const textRadioOption = nativeElement.querySelector(
+      '#encrypt-input-text'
     ) as HTMLInputElement;
-    expect(fileRadioOption.checked).toBeTrue();
+    expect(textRadioOption.checked).toBeTrue();
   });
 
   it('Should have file input', () => {
