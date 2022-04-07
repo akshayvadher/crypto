@@ -37,7 +37,6 @@ export class DecodeComponent implements OnInit {
 
     const jwtSplitted = content.split('.');
     if (jwtSplitted.length === 3) {
-      console.log(jwtSplitted)
       const head = decodeBase64(jwtSplitted[0]);
       const headPretty = JSON.stringify(JSON.parse(head),null,2);
       const body = decodeBase64(jwtSplitted[1]);

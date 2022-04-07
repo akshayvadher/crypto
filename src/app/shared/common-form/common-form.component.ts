@@ -30,12 +30,12 @@ export class CommonFormComponent implements OnInit, OnChanges {
   file: File;
   revealedContent: string;
 
-  selectedInput: 'file' | 'text' = 'file';
+  selectedInput: 'file' | 'text' = 'text';
 
   constructor(formBuilder: FormBuilder) {
     this.form = formBuilder.group({
       inputSelection: [
-        { value: 'file', disabled: false },
+        { value: this.selectedInput, disabled: false },
         [Validators.required],
       ],
       fileInputName: ['', Validators.required],
@@ -44,7 +44,17 @@ export class CommonFormComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setSupportedAlgoIfProvided();
+  }
+
+  private setSupportedAlgoIfProvided() {
+    if (this.inputConfiguration.supportedAlgorithms) {
+      this.form
+        .get('algo')
+        .setValue(this.inputConfiguration.supportedAlgorithms[0]);
+    }
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes) {

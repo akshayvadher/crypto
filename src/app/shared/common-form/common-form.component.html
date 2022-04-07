@@ -42,7 +42,7 @@
     <label for="algo" class="col-sm-2 col-form-label">Algorithm</label>
     <div class="col-sm-10">
       <select class="form-control" formControlName="algo" id="algo">
-        <option *ngFor="let alg of inputConfiguration.supportedAlgorithms">
+        <option *ngFor="let alg of inputConfiguration.supportedAlgorithms" [value]="alg">
           {{ alg }}
         </option>
       </select>

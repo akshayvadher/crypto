@@ -8,19 +8,14 @@ import { SharedModule } from '@crypto/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DecodeComponent } from './decode/decode.component';
 
-
 @NgModule({
-  declarations: [
-    EncodeComponent,
-    EncodeWorkerComponent,
-    DecodeComponent
-  ],
+  declarations: [EncodeComponent, EncodeWorkerComponent, DecodeComponent],
   imports: [
     CommonModule,
     EncodeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-  ]
+  ],
 })
-export class EncodeModule { }
+export class EncodeModule {}
