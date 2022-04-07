@@ -30,12 +30,12 @@ export class CommonFormComponent implements OnInit, OnChanges {
   file: File;
   revealedContent: string;
 
-  selectedInput: 'file' | 'text' = 'file';
+  selectedInput: 'file' | 'text' = 'text';
 
   constructor(formBuilder: FormBuilder) {
     this.form = formBuilder.group({
       inputSelection: [
-        { value: 'file', disabled: false },
+        { value: this.selectedInput, disabled: false },
         [Validators.required],
       ],
       fileInputName: ['', Validators.required],
