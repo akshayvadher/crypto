@@ -24,7 +24,7 @@
     "crypto-js": "^4.1.1",
     "file-saver": "^2.0.5",
     "lodash": "^4.17.21",
-    "ngx-bootstrap": "^8.0.0",
+    "ngx-bootstrap": "^10.2.0",
     "password-sheriff": "^1.1.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
