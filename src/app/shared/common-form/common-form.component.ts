@@ -9,8 +9,8 @@ import {
   Validators,
   AbstractControl,
   ValidationErrors,
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
 } from '@angular/forms';
 import { PasswordPolicy, charsets } from 'password-sheriff';
 
@@ -26,13 +26,13 @@ export class CommonFormComponent implements OnInit, OnChanges {
   @Input() inputConfiguration: InputConfiguration;
   @Input() process: (content: string, password: string, algo: string) => string;
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   file: File;
   revealedContent: string;
 
   selectedInput: 'file' | 'text' = 'text';
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(formBuilder: UntypedFormBuilder) {
     this.form = formBuilder.group({
       inputSelection: [
         { value: this.selectedInput, disabled: false },
