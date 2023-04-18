@@ -122,6 +122,9 @@
           }
         }
       }
-    }},
-  "defaultProject": "crypto"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }
