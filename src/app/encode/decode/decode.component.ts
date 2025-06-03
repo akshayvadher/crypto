@@ -6,9 +6,10 @@ import {
 import { enc } from 'crypto-js';
 
 @Component({
-  selector: 'app-decode',
-  templateUrl: './decode.component.html',
-  styleUrls: ['./decode.component.scss'],
+    selector: 'app-decode',
+    templateUrl: './decode.component.html',
+    styleUrls: ['./decode.component.scss'],
+    standalone: false
 })
 export class DecodeComponent implements OnInit {
   inputConfiguration: InputConfiguration;

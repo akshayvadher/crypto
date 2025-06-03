@@ -5,7 +5,7 @@
     type="button"
     class="btn btn-primary dropdown-toggle theme-changer"
     aria-controls="dropdown-basic"
-  >
+    >
     Change theme <span class="caret"></span>
   </button>
   <ul
@@ -14,17 +14,19 @@
     class="dropdown-menu theme-changer-menu"
     role="menu"
     aria-labelledby="button-basic"
-  >
-    <li role="menuitem" *ngFor="let theme of themeList">
-      <a
-        class="dropdown-item"
-        href="#"
-        (click)="changeThemeClicked(theme)"
-        [class.selected]="theme.name === activeTheme"
-      >
-        {{ theme.name }}
-      </a>
-    </li>
+    >
+    @for (theme of themeList; track theme) {
+      <li role="menuitem">
+        <a
+          class="dropdown-item"
+          href="#"
+          (click)="changeThemeClicked(theme)"
+          [class.selected]="theme.name === activeTheme"
+          >
+          {{ theme.name }}
+        </a>
+      </li>
+    }
     <li class="divider dropdown-divider"></li>
     <li role="menuitem text-center">
       <span class="dropdown-item">

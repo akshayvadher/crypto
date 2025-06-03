@@ -6,9 +6,10 @@ import {
 import { enc } from 'crypto-js';
 
 @Component({
-  selector: 'app-encode-worker',
-  templateUrl: './encode-worker.component.html',
-  styleUrls: ['./encode-worker.component.scss'],
+    selector: 'app-encode-worker',
+    templateUrl: './encode-worker.component.html',
+    styleUrls: ['./encode-worker.component.scss'],
+    standalone: false
 })
 export class EncodeWorkerComponent implements OnInit {
   inputConfiguration: InputConfiguration;

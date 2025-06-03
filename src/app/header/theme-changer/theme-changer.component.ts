@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-theme-changer',
-  templateUrl: './theme-changer.component.html',
-  styleUrls: ['./theme-changer.component.scss'],
+    selector: 'app-theme-changer',
+    templateUrl: './theme-changer.component.html',
+    styleUrls: ['./theme-changer.component.scss'],
+    standalone: false
 })
 export class ThemeChangerComponent implements OnInit {
   themeList: { name: string; link: string; type: string }[] = [

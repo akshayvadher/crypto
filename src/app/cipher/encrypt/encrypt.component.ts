@@ -3,9 +3,10 @@ import { AES } from 'crypto-js';
 import { Algorithm, InputConfiguration } from '@crypto/shared/common-form/input-configuration';
 
 @Component({
-  selector: 'app-encrypt',
-  templateUrl: './encrypt.component.html',
-  styleUrls: ['./encrypt.component.scss'],
+    selector: 'app-encrypt',
+    templateUrl: './encrypt.component.html',
+    styleUrls: ['./encrypt.component.scss'],
+    standalone: false
 })
 export class EncryptComponent implements OnInit {
   inputConfiguration: InputConfiguration;
