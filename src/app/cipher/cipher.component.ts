@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-cipher',
-  templateUrl: './cipher.component.html',
-  styleUrls: ['./cipher.component.scss']
+    selector: 'app-cipher',
+    templateUrl: './cipher.component.html',
+    styleUrls: ['./cipher.component.scss'],
+    standalone: false
 })
 export class CipherComponent implements OnInit {
 

@@ -18,9 +18,10 @@ import { saveAs } from 'file-saver';
 import { InputConfiguration } from './input-configuration';
 
 @Component({
-  selector: 'app-common-form',
-  templateUrl: './common-form.component.html',
-  styleUrls: ['./common-form.component.scss'],
+    selector: 'app-common-form',
+    templateUrl: './common-form.component.html',
+    styleUrls: ['./common-form.component.scss'],
+    standalone: false
 })
 export class CommonFormComponent implements OnInit, OnChanges {
   @Input() inputConfiguration: InputConfiguration;

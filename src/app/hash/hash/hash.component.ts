@@ -6,8 +6,9 @@ import {
 import { MD5, SHA1, SHA256, SHA512, SHA3 } from 'crypto-js';
 
 @Component({
-  templateUrl: './hash.component.html',
-  styleUrls: ['./hash.component.scss'],
+    templateUrl: './hash.component.html',
+    styleUrls: ['./hash.component.scss'],
+    standalone: false
 })
 export class HashComponent implements OnInit {
   inputConfiguration: InputConfiguration;

@@ -6,9 +6,10 @@ import {
 import { AES, enc } from 'crypto-js';
 
 @Component({
-  selector: 'app-decrypt',
-  templateUrl: './decrypt.component.html',
-  styleUrls: ['./decrypt.component.scss'],
+    selector: 'app-decrypt',
+    templateUrl: './decrypt.component.html',
+    styleUrls: ['./decrypt.component.scss'],
+    standalone: false
 })
 export class DecryptComponent implements OnInit {
   inputConfiguration: InputConfiguration;
